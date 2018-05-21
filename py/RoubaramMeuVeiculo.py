@@ -11,7 +11,8 @@ from javax.swing import JOptionPane
 os.system('cls||clear');
 os.system("cat /etc/issue | cut -d' ' -f1,2");
 print "Bem Vindos ao RobaramMeuVeiculo!.\nAqui vc podera ajudar a recuperar seu veculo roubado com alguns simples clicks.";
-veic=veiculo('carro','honda','civic','als-0212','azul')
+#veic=veiculo('carro','honda','civic','als-0212','azul')
+veic=veiculo()
 p1=pessoa()
 
 def limpar():
