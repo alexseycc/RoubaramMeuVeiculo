@@ -23,7 +23,6 @@ def notificarUsuario():
   print "enviando informações para o proprietário...\n"
   print "nome"+p1.nome+"\nemail:"+p1.email+"\ntel:"+p1.tel
   
-
 def cadastrar():
   veic.tipo=raw_input("tipo do veículo:|carro|moto:\n")
   limpar()
