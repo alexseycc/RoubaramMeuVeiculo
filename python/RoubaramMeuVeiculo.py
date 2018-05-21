@@ -60,6 +60,9 @@ def cadastrar():
     print 'placa:'+veic.placa
     print 'cor:'+veic.cor
     print 'Proprietario do veiculo:'+p1.nome
+    
+  #def consultar():
+   #for 
   
 print" @@@@@@@@@@@@@@@@@";
 print"@                 @";
