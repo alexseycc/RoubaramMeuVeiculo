@@ -2,7 +2,9 @@
 import os;
 from veiculo import veiculo;
 from pessoa import pessoa
-from pymongo import Connection
+#from pymongo import Connection
+from pymongo import MongoClient
+cliente = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
 """
 from jython import JFrame,import JOptionPane
 from javax.swing import JFrame, JMenuBar, JMenu, JMenuItem, JTextField
