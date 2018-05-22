@@ -27,7 +27,7 @@ p1=pessoa()
   
 def inserirDados(veic,p1):
   db.veiculo.insert({"tipo":veic.tipo,"nome":veic.nome,"placa":veic.placa,"cor":veic.cor})
-  db.pessoa.insert({"nome":p1.nome,"email":p1.email,"telefone":p1.tel})
+  db.pessoa.insert({"nome":p1.nome,"email":p1.email,"telefone":p1.prefix+p1.tel})
     
 def limpar():
   os.system('cls||clear');
@@ -59,16 +59,20 @@ def cadastrar():
   else:
     veic.marca=raw_input("marca da "+veic.tipo+":\n")
     limpar()
-    veic.nome=raw_input("Marca da "+veic.tipo+":\n")
+    veic.nome=raw_input("Nome da "+veic.tipo+":\n")
     limpar()
     veic.placa=raw_input("Placa da "+veic.tipo+":\n")
     limpar()
     veic.cor=raw_input("Cor da "+veic.tipo+":\n")
-    p1.nome=raw_input("Nome do dono do veiculo:\n")
-    inserirDados(veic,p1)
-    print "Cadastrado com sucesso!"
     limpar()
-    
+    p1.nome=raw_input("Nome do dono do veiculo:\n")
+    limpar()
+    p1.email=raw_input("email para contato:\n")
+    limpar()
+    p1.tel=raw_input("telefone ou whatsapp para contato:\n")
+    inserirDados(veic,p1)
+    limpar()
+    print "Cadastrado com sucesso!"
     
 def imprimir():
     '''
@@ -97,6 +101,7 @@ print"@  1-cadastrar    @";
 print"@  2-consultar    @";
 print"@                 @";
 print" @@@@@@@@@@@@@@@@@";
+#print p1.prefix+p1.tel
 opt=raw_input();
 if opt == '1':
     limpar() 

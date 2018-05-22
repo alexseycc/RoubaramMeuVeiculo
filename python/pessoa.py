@@ -1,5 +1,6 @@
 class pessoa:
   
+  prefix="+5571"
   nome=""
   email=""
   tel=""
