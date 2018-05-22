@@ -6,7 +6,7 @@ from pessoa import pessoa
 #from pymongo import Connection
 from pymongo import MongoClient
 conn = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
-db = conn.RobaramMeuVeiculo
+db = conn.RoubaramMeuVeiculo
 collection = db.veiculo
 ar = list(collection.find())
 
@@ -42,23 +42,23 @@ def cadastrar():
   if veic.tipo=="carro":
     veic.marca=raw_input("marca do "+veic.tipo+":\n")
     limpar()
-    veic.nome=raw_input("nome do "+veic.tipo+":\n")
+    veic.nome=raw_input("Nome do "+veic.tipo+":\n")
     limpar()
-    veic.placa=raw_input("placa do "+veic.tipo+":\n")
+    veic.placa=raw_input("Placa do "+veic.tipo+":\n")
     limpar()
-    veic.cor=raw_input("cor do "+veic.tipo+":\n")
+    veic.cor=raw_input("Cor do "+veic.tipo+":\n")
     limpar()
-    p1.nome=raw_input("nome do dono do veiculo:\n")
+    p1.nome=raw_input("Nome do dono do veiculo:\n")
     limpar()
   else:
     veic.marca=raw_input("marca da "+veic.tipo+":\n")
     limpar()
-    veic.nome=raw_input("marca da "+veic.tipo+":\n")
+    veic.nome=raw_input("Marca da "+veic.tipo+":\n")
     limpar()
-    veic.placa=raw_input("placa da "+veic.tipo+":\n")
+    veic.placa=raw_input("Placa da "+veic.tipo+":\n")
     limpar()
-    veic.cor=raw_input("cor da "+veic.tipo+":\n")
-    p1.nome=raw_input("nome do dono do veiculo:\n")
+    veic.cor=raw_input("Cor da "+veic.tipo+":\n")
+    p1.nome=raw_input("Nome do dono do veiculo:\n")
     limpar()
   
   #def inserirDados():
@@ -71,9 +71,15 @@ def cadastrar():
     print 'cor:'+veic.cor
     print 'Proprietario do veiculo:'+p1.nome
     
-  #def consultar():
-   #for 
-  
+def consulta():
+  cc=raw_input("placa a ser consultada:") 
+  #for i in range(1,10):
+   #print i
+  if(db.veiculo.count({"placa":cc})>0):
+    print "Veiculo encontrado:",db.veiculo.find_one({"placa":cc})   
+  else:
+   print "Nenhum carro encontrado com essa descrição"
+  #+db.veiculo.count({"placa":cc})
 print" @@@@@@@@@@@@@@@@@";
 print"@                 @";
 print"@  1-cadastrar    @";
@@ -89,7 +95,7 @@ if opt == '1':
      
 elif opt=='2':
     limpar()
-    imprimir()
+    consulta()
 
 else:
     print "\nbad\n"#consultar no banco mongo
@@ -98,12 +104,12 @@ else:
    # collection.insert({"tipo":"carro","marca":"nissa","nome":"sentra","placa":"jpf144","cor":"preto"});
 
    # print ar
-    x   = []
-    cur = db.veiculo.find()
-    for i in cur:
-      x.append(i)
-      print x,"\n"
-  
+#    x   = []
+ #   cur = db.veiculo.find()
+  #  for i in cur:
+   #   x.append(i)
+    #  print x,"\n"
+    print "carro encontrado"+db.veiculo.find_one()
   
   
   
