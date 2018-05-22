@@ -1,10 +1,25 @@
 # -*- coding: cp1252 -*-
 import os;
 from veiculo import veiculo;
+#import MySQLdb
 from pessoa import pessoa
 #from pymongo import Connection
 from pymongo import MongoClient
-cliente = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
+conn = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
+db = conn.RobaramMeuVeiculo
+#cur = db.cursor() 
+# Created or Switched to collection names: my_gfg_collection
+collection = db.veiculo
+#cursor = veiculo.find()
+  
+  
+#for record in collection:
+#print collection
+
+
+
+
+
 """
 from jython import JFrame,import JOptionPane
 from javax.swing import JFrame, JMenuBar, JMenu, JMenuItem, JTextField
@@ -72,6 +87,7 @@ print"@                 @";
 print" @@@@@@@@@@@@@@@@@";
 #print veic.cor,veic.marca;
 opt=raw_input();
+#opt=input();
 if opt == '1':
     limpar() 
     cadastrar()
@@ -82,9 +98,10 @@ elif opt=='2':
 
 else:
     print "\nbad\n"#consultar no banco mongo
-    
+    print collection.find()
+   
+   # collection.insert({"tipo":"carro","marca":"nissa","nome":"sentra","placa":"jpf144","cor":"preto"});
 
-    
   
   
   

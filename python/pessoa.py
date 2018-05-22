@@ -35,3 +35,7 @@ class pessoa:
     
   def getTel(self):
     return self.tel
+  
+  def insertPessoa(self,nome,email,tel):
+    q1="{nome:'"+nome+",email:'"+email+"',telefone:'"+tel+"'}"
+    #print '{}'
