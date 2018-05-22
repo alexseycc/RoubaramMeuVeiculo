@@ -19,14 +19,13 @@ from javax.swing import JOptionPane
 """
 
 os.system('cls||clear');
-os.system("cat /etc/issue | cut -d' ' -f1,2");
-print "Bem Vindos ao RobaramMeuVeículo!.\nAqui vc poderá ajudar a recuperar seu vecíulo roubado com alguns simples clicks.";
+os.system("cat /etc/issue | cut -d' ' -f1,2 | sed -n 1p");
 veic=veiculo()
 p1=pessoa()
 
   
 def inserirDados(veic,p1):
-  db.veiculo.insert({"tipo":veic.tipo,"nome":veic.nome,"placa":veic.placa,"cor":veic.cor})
+  db.veiculo.insert({"tipo":veic.tipo,"marca":veic.marca,"nome":veic.nome,"placa":veic.placa,"cor":veic.cor})
   db.pessoa.insert({"nome":p1.nome,"email":p1.email,"telefone":p1.prefix+p1.tel})
     
 def limpar():
@@ -92,15 +91,36 @@ def consulta():
   cc=raw_input("placa a ser consultada:") 
   if(db.veiculo.count({"placa":cc})>0):
     #veic.veicu()
-    print "Veiculo encontrado:",db.veiculo.find_one({"placa":cc})   
+    print "Veiculo encontrado:",db.veiculo.find_one({"placa":cc})
+    print "\n"
+    print "enviando informações de veículo para o proprietário!"
+   # print "proprietário:"+
   else:
    print "Nenhum carro encontrado com essa descrição"
-print" @@@@@@@@@@@@@@@@@";
-print"@                 @";
+print"\n\n"  
+print"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+print"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+print"MMMMWKKK0kdolcccl0MMMMMMMMMMMMMMNKKKKKKKKKK00NMMMM"
+print"MMMM0kdoc:;'..   .NMMMMMMMMMMMMMd............cMMMM    Bem Vindos ao RobaramMeuVeículo!."
+print"MMMMO            .XMMMMMMMMMMMMMd            cMMMM    Aqui vc poderá ajudar a recuperar "
+print"MMMMk            .XMMMMMMMMMMMMMd            cMMMM          seu vecíulo roubado com"
+print"MMMMx            .XMMKxxxxxdxNMMd            cMMMM            alguns simples clicks."
+print"MMMMd    :xxc    .XMN        'MMd    .co;    cMMMM"
+print"MMMMd   oo  lx   .XMN        .MMd   .0. cd   cMMMM"
+print"MMMMd  'KxoodX;  .XMN        'MMd   d0dddX,  cMMMM"
+print"MMMMo  kXXooXXX  .XMN   .,   'MMd  .XXd;OXk  cMMMM"
+print"MMMMo  kXK..0XX  .XMW  .d.d  'MMd  .XXo 0Xk  cMMMM"
+print"MMMMo  oXXkkXXk  .XMW  dKlKl 'MMd   dKXXX0,  cMMMM"
+print"MMMMo   'cool,   .XMN  lXoX: 'MMd     ...    :MMMM"
+print"MMMMo            .XMN   ...  .MMd            :MMMM"
+print"MMMMo            .XMN        .MMd            cMMMM"
+print"MMMMo            .XMN        .MMo      .     :MMMM"
+print"MMMMO.           ,WMMl'''''''xMMk''''''''''''oMMMM"
+print"MMMMMWXKKKKKKKXXXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+print"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+  
 print"@  1-cadastrar    @";
 print"@  2-consultar    @";
-print"@                 @";
-print" @@@@@@@@@@@@@@@@@";
 #print p1.prefix+p1.tel
 opt=raw_input();
 if opt == '1':
