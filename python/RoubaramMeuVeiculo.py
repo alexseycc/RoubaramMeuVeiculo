@@ -21,10 +21,14 @@ from javax.swing import JOptionPane
 os.system('cls||clear');
 os.system("cat /etc/issue | cut -d' ' -f1,2");
 print "Bem Vindos ao RobaramMeuVeículo!.\nAqui vc poderá ajudar a recuperar seu vecíulo roubado com alguns simples clicks.";
-#veic=veiculo('carro','honda','civic','als-0212','azul')
 veic=veiculo()
 p1=pessoa()
 
+  
+def inserirDados(veic,p1):
+  db.veiculo.insert({"tipo":veic.tipo,"nome":veic.nome,"placa":veic.placa,"cor":veic.cor})
+  db.pessoa.insert({"nome":p1.nome,"email":p1.email,"telefone":p1.tel})
+    
 def limpar():
   os.system('cls||clear');
   ##revisar alguns conceitos
@@ -46,6 +50,12 @@ def cadastrar():
     limpar()
     p1.nome=raw_input("Nome do dono do veiculo:\n")
     limpar()
+    p1.email=raw_input("email para contato:\n")
+    limpar()
+    p1.tel=raw_input("telefone ou whatsapp para contato:\n")
+    inserirDados(veic,p1)
+    limpar()
+    print "Cadastrado com sucesso!"
   else:
     veic.marca=raw_input("marca da "+veic.tipo+":\n")
     limpar()
@@ -55,23 +65,29 @@ def cadastrar():
     limpar()
     veic.cor=raw_input("Cor da "+veic.tipo+":\n")
     p1.nome=raw_input("Nome do dono do veiculo:\n")
+    inserirDados(veic,p1)
+    print "Cadastrado com sucesso!"
     limpar()
-  
-  #def inserirDados():
-    #print "db.colors.save({name:"red",value:"FF0000"});
-
-  def imprimir():
+    
+    
+def imprimir():
+    '''
     print 'veiculo do tipo:'+veic.tipo
     print veic.tipo + ' da marca:'+veic.marca,veic.nome
     print 'placa:'+veic.placa
     print 'cor:'+veic.cor
     print 'Proprietario do veiculo:'+p1.nome
+    '''
+    print db.veiculo.count(),"valores na colação(tabela) 'veiculo'\n"
+    print db.veiculo.find_one();
+    print "\n\n"
+    print db.pessoa.count(),"valores na colação(tabela) 'pessoa'\n"
+    print db.pessoa.find_one()
     
 def consulta():
   cc=raw_input("placa a ser consultada:") 
-  #for i in range(1,10):
-   #print i
   if(db.veiculo.count({"placa":cc})>0):
+    #veic.veicu()
     print "Veiculo encontrado:",db.veiculo.find_one({"placa":cc})   
   else:
    print "Nenhum carro encontrado com essa descrição"
@@ -82,7 +98,6 @@ print"@  2-consultar    @";
 print"@                 @";
 print" @@@@@@@@@@@@@@@@@";
 opt=raw_input();
-#opt=input();
 if opt == '1':
     limpar() 
     cadastrar()
@@ -90,7 +105,9 @@ if opt == '1':
 elif opt=='2':
     limpar()
     consulta()
-
+elif opt=='5':
+    limpar()
+    imprimir()
 else:
     print "\nbad\n"#consultar no banco mongo
     print "carro encontrado"+db.veiculo.find_one()
