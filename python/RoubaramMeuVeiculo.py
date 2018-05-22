@@ -8,10 +8,6 @@ from pymongo import MongoClient
 conn = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
 db = conn.RoubaramMeuVeiculo
 collection = db.veiculo
-ar = list(collection.find())
-
-
-
 
 
 
@@ -79,14 +75,12 @@ def consulta():
     print "Veiculo encontrado:",db.veiculo.find_one({"placa":cc})   
   else:
    print "Nenhum carro encontrado com essa descrição"
-  #+db.veiculo.count({"placa":cc})
 print" @@@@@@@@@@@@@@@@@";
 print"@                 @";
 print"@  1-cadastrar    @";
 print"@  2-consultar    @";
 print"@                 @";
 print" @@@@@@@@@@@@@@@@@";
-#print veic.cor,veic.marca;
 opt=raw_input();
 #opt=input();
 if opt == '1':
@@ -99,16 +93,6 @@ elif opt=='2':
 
 else:
     print "\nbad\n"#consultar no banco mongo
-    #print db.veiculo.find_one()
-   
-   # collection.insert({"tipo":"carro","marca":"nissa","nome":"sentra","placa":"jpf144","cor":"preto"});
-
-   # print ar
-#    x   = []
- #   cur = db.veiculo.find()
-  #  for i in cur:
-   #   x.append(i)
-    #  print x,"\n"
     print "carro encontrado"+db.veiculo.find_one()
   
   
