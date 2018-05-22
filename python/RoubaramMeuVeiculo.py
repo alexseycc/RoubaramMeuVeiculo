@@ -7,14 +7,9 @@ from pessoa import pessoa
 from pymongo import MongoClient
 conn = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
 db = conn.RobaramMeuVeiculo
-#cur = db.cursor() 
-# Created or Switched to collection names: my_gfg_collection
 collection = db.veiculo
-#cursor = veiculo.find()
-  
-  
-#for record in collection:
-#print collection
+ar = list(collection.find())
+
 
 
 
@@ -98,12 +93,16 @@ elif opt=='2':
 
 else:
     print "\nbad\n"#consultar no banco mongo
-    print collection.find()
+    #print db.veiculo.find_one()
    
    # collection.insert({"tipo":"carro","marca":"nissa","nome":"sentra","placa":"jpf144","cor":"preto"});
 
-  
-  
+   # print ar
+    x   = []
+    cur = db.veiculo.find()
+    for i in cur:
+      x.append(i)
+      print x,"\n"
   
   
   
