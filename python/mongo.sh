@@ -14,7 +14,7 @@ echo "#x32
 #
 [mongodb]
 name=MongoDB Repository
-baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
+baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/i686/
 gpgcheck=0
 enabled=1" >> /etc/yum.repos.d/mongodb.repo
 
@@ -22,11 +22,12 @@ else
 echo "#x64
 [mongodb]
 name=MongoDB Repository
-baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/i686/
+baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
 gpgcheck=0
 enabled=1" >> /etc/yum.repos.d/mongodb.repo
 fi
 yum install mongo-10gen mongo-10gen-server
+sed '/dbpath=/asmallfiles=true' /etc/mongod.conf
 chkconfig mongod on 
 ;;
 ubuntu)
