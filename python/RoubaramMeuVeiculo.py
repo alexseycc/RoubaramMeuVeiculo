@@ -25,9 +25,10 @@ p1=pessoa()
 
   
 def inserirDados(veic,p1):
+  use RoubaramMeuVeiculo
   db.veiculo.insert({"tipo":veic.tipo,"marca":veic.marca,"nome":veic.nome,"placa":veic.placa,"cor":veic.cor})
   db.pessoa.insert({"nome":p1.nome,"email":p1.email,"telefone":p1.prefix+p1.tel})
-    
+  RoubaramMeuVeiculo.save({})  
 def limpar():
   os.system('cls||clear');
   ##revisar alguns conceitos
