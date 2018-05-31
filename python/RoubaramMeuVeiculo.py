@@ -1,5 +1,6 @@
 # -*- coding: cp1252 -*-
 import os;
+#import re
 from veiculo import veiculo;
 #import MySQLdb
 from pessoa import pessoa
@@ -8,7 +9,7 @@ from pymongo import MongoClient
 conn = MongoClient('localhost', 27017) # or cliente = MongoClient('mongodb://localhost:27017/')
 db = conn.RoubaramMeuVeiculo
 collection = db.veiculo
-
+ceo="alexsy" 
 
 
 """
@@ -20,21 +21,29 @@ from javax.swing import JOptionPane
 
 os.system('cls||clear');
 os.system("cat /etc/issue | cut -d' ' -f1,2 | sed -n 1p");
+print "welcome ceo:"+ceo
 veic=veiculo()
 p1=pessoa()
 
   
 def inserirDados(veic,p1):
-  use RoubaramMeuVeiculo
   db.veiculo.insert({"tipo":veic.tipo,"marca":veic.marca,"nome":veic.nome,"placa":veic.placa,"cor":veic.cor})
   db.pessoa.insert({"nome":p1.nome,"email":p1.email,"telefone":p1.prefix+p1.tel})
-  RoubaramMeuVeiculo.save({})  
 def limpar():
   os.system('cls||clear');
   ##revisar alguns conceitos
 def notificarUsuario():
   print "enviando informações para o proprietário...\n"
   print "nome"+p1.nome+"\nemail:"+p1.email+"\ntel:"+p1.tel
+  
+def imp():
+  print "tipo:"+veic.tipo
+  print "marca:"+veic.marca
+  print "nome:"+veic.nome
+  print "placa:"+veic.placa
+  print "proprietário:"+p1.nome
+  print "email:"+p1.email
+  print "tel:"+p1.prefix+p1.tel
   
 def cadastrar():
   veic.tipo=raw_input("tipo do veículo:|carro|moto:\n")
@@ -52,10 +61,20 @@ def cadastrar():
     limpar()
     p1.email=raw_input("email para contato:\n")
     limpar()
-    p1.tel=raw_input("telefone ou whatsapp para contato:\n")
+    tl=raw_input("telefone ou whatsapp para contato:\n")
+    p1.tel=tl.replace('+5571','').replace('5571','').replace('55','').replace('71','')
+    #for i in p1.getTel():
+     #print i,
+    #print "\nnumero de tel:"+i.replace("71"," ")
+    #line=p1.getTel()
+    #print "nome linha:"+line
+    #print "nome linha usando replace:"+line.replace('71','')+"quand linhas:",len(line.replace('71',''))
+    
+    #print "nome linha usanso re:"+re.sub('71','',line)
     inserirDados(veic,p1)
     limpar()
     print "Cadastrado com sucesso!"
+    imp()
   else:
     veic.marca=raw_input("marca da "+veic.tipo+":\n")
     limpar()
@@ -69,10 +88,13 @@ def cadastrar():
     limpar()
     p1.email=raw_input("email para contato:\n")
     limpar()
-    p1.tel=raw_input("telefone ou whatsapp para contato:\n")
+    tl=raw_input("telefone ou whatsapp para contato:\n")
+    p1.tel=tl.replace('+5571','').replace('5571','').replace('55','').replace('71','')
     inserirDados(veic,p1)
     limpar()
     print "Cadastrado com sucesso!"
+    imp()
+    
     
 def imprimir():
     '''
